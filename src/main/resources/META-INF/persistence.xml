@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="mariadb">
+<!--        <class>entities.Account</class>-->
+<!--        <class>entities.Customer</class>-->
+<!--        <class>entities.OrderDetails</class>-->
+<!--        <class>entities.Orders</class>-->
+<!--        <class>entities.Reservation</class>-->
+<!--        <class>entities.ReservationDetails</class>-->
+<!--        <class>entities.Room</class>-->
+<!--        <class>entities.Service</class>-->
+<!--        <class>entities.Staff</class>-->
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="org.mariadb.jdbc.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/manage-hoteldb" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="root" />
+            <property name="jakarta.persistence.jdbc.dialect"
+                      value="org.hibernate.dialect.MariaDBDialect" />
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.format_sql" value="false" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="mssql">
+<!--        <class>entities.Account</class>-->
+<!--        <class>entities.Customer</class>-->
+<!--        <class>entities.OrderDetails</class>-->
+<!--        <class>entities.Orders</class>-->
+<!--        <class>entities.Reservation</class>-->
+<!--        <class>entities.ReservationDetails</class>-->
+<!--        <class>entities.Room</class>-->
+<!--        <class>entities.Service</class>-->
+<!--        <class>entities.Staff</class>-->
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:sqlserver://localhost:1433;databaseName=manage-hoteldb;trustServerCertificate=true;encrypt=true;" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="220501" />
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+            <property name="jakarta.persistence.jdbc.dialect"
+                      value="org.hibernate.dialect.SQLServerDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        </properties>
+    </persistence-unit>
+</persistence>
