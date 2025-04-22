@@ -475,7 +475,7 @@ public class Tab_StatisticsRevenue extends JPanel {
 
         // Dòng header
         Row headerRow = sheet.createRow(4);
-        String[] headers = {"Thời gian", "Tổng doanh thu (VND)", "Doanh thu phòng (VND)", "Doanh thu dịch vụ (VND)"};
+        String[] headers = {"Thời gian", "Tổng doanh thu (VND)", "Doanh thu dịch vụ (VND)"};
         for (int i = 0; i < headers.length; i++) {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(headers[i]);
@@ -631,35 +631,35 @@ public class Tab_StatisticsRevenue extends JPanel {
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), java.awt.Color.lightGray, new java.awt.Color(153, 153, 153)));
-
-        jLabel11.setFont(new Font("Segoe UI Black", 0, 14));
-        jLabel11.setForeground(new java.awt.Color(153, 153, 255));
-        jLabel11.setText("TỔNG DOANH THU PHÒNG");
-
-        jLabel12.setFont(new Font("Segoe UI", 0, 14));
-        jLabel12.setText("0 VND");
-
-        GroupLayout jPanel6Layout = new GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-                jPanel6Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addContainerGap(20, Short.MAX_VALUE)
-                                .addGroup(jPanel6Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel12)
-                                        .addComponent(jLabel11))
-                                .addGap(26, 26, 26))
-        );
-        jPanel6Layout.setVerticalGroup(
-                jPanel6Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel11, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                .addComponent(jLabel12)
-                                .addGap(26, 26, 26))
-        );
+//        jPanel6.setBorder(BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), java.awt.Color.lightGray, new java.awt.Color(153, 153, 153)));
+//
+//        jLabel11.setFont(new Font("Segoe UI Black", 0, 14));
+//        jLabel11.setForeground(new java.awt.Color(153, 153, 255));
+//        jLabel11.setText("TỔNG DOANH THU PHÒNG");
+//
+//        jLabel12.setFont(new Font("Segoe UI", 0, 14));
+//        jLabel12.setText("0 VND");
+//
+//        GroupLayout jPanel6Layout = new GroupLayout(jPanel6);
+//        jPanel6.setLayout(jPanel6Layout);
+//        jPanel6Layout.setHorizontalGroup(
+//                jPanel6Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+//                                .addContainerGap(20, Short.MAX_VALUE)
+//                                .addGroup(jPanel6Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//                                        .addComponent(jLabel12)
+//                                        .addComponent(jLabel11))
+//                                .addGap(26, 26, 26))
+//        );
+//        jPanel6Layout.setVerticalGroup(
+//                jPanel6Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//                        .addGroup(jPanel6Layout.createSequentialGroup()
+//                                .addContainerGap()
+//                                .addComponent(jLabel11, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+//                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+//                                .addComponent(jLabel12)
+//                                .addGap(26, 26, 26))
+//        );
 
         pFind.setBackground(new java.awt.Color(255, 255, 255));
         pFind.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));

@@ -45,11 +45,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="pnl_Infor" max="32767" attributes="0"/>
-                  <Component id="pnl_Search" pref="305" max="32767" attributes="0"/>
+                  <Component id="pnl_Search" pref="308" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="pnl_ListStaff" pref="692" max="32767" attributes="0"/>
+                  <Component id="pnl_ListStaff" pref="689" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="pnl_GroupButton" min="-2" pref="256" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -112,6 +112,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="btn_Clear" min="-2" pref="119" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnStatus" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -132,7 +134,10 @@
                       <Component id="pnl_Input" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btn_Clear" pref="29" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btn_Clear" pref="32" max="32767" attributes="0"/>
+                      <Component id="btnStatus" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -152,7 +157,7 @@
                       <Component id="pnl_InforLeft" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="pnl_InforRight" min="-2" pref="347" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -543,6 +548,17 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ClearActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="ui.components.button.ButtonCompleteCustom" name="btnStatus">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ngh&#x1ec9; l&#xe0;m"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[104, 26]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[104, 26]"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

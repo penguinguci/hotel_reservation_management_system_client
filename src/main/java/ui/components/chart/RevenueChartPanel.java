@@ -191,9 +191,9 @@ public class RevenueChartPanel extends JPanel {
 
             System.out.println("Creating Line Chart with labels: " + labels +
                     ", total revenue: " + totalRevenueData +
-                    ", room revenue: " + roomRevenueData +
+
                     ", service revenue: " + serviceRevenueData);
-            customLineChartPanel = new CustomLineChartPanel(labels, totalRevenueData, roomRevenueData, serviceRevenueData);
+            customLineChartPanel = new CustomLineChartPanel(labels, totalRevenueData, serviceRevenueData);
             customLineChartPanel.setChartTitle(chartTitle);
             chartContainer.add(customLineChartPanel, LINE_CHART);
             System.out.println("Successfully created Line Chart");

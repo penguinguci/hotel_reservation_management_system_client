@@ -17,15 +17,13 @@ public class CustomLineChartPanel extends JPanel {
     private String chartTitle = "DOANH THU THEO THÁNG - NĂM 2024";
     private List<String> labels;
     private List<Double> totalRevenueData; // Doanh thu tổng
-    private List<Double> roomRevenueData;  // Doanh thu phòng
     private List<Double> serviceRevenueData; // Doanh thu dịch vụ
     private XChartPanel<CategoryChart> chartPanel;
 
     public CustomLineChartPanel(List<String> labels, List<Double> totalRevenueData,
-                                List<Double> roomRevenueData, List<Double> serviceRevenueData) {
+                                List<Double> serviceRevenueData) {
         this.labels = labels;
         this.totalRevenueData = totalRevenueData;
-        this.roomRevenueData = roomRevenueData;
         this.serviceRevenueData = serviceRevenueData;
         setLayout(new BorderLayout());
         createChart();
@@ -37,10 +35,9 @@ public class CustomLineChartPanel extends JPanel {
     }
 
     public void setChartData(List<String> labels, List<Double> totalRevenueData,
-                             List<Double> roomRevenueData, List<Double> serviceRevenueData) {
+                             List<Double> serviceRevenueData) {
         this.labels = labels;
         this.totalRevenueData = totalRevenueData;
-        this.roomRevenueData = roomRevenueData;
         this.serviceRevenueData = serviceRevenueData;
         updateChart();
     }
@@ -52,12 +49,10 @@ public class CustomLineChartPanel extends JPanel {
     private void createChart() {
         System.out.println("Creating Line Chart with labels: " + labels +
                 ", total revenue: " + totalRevenueData +
-                ", room revenue: " + roomRevenueData +
                 ", service revenue: " + serviceRevenueData);
 
-        if (labels == null || totalRevenueData == null || roomRevenueData == null ||
-                serviceRevenueData == null || labels.isEmpty() || totalRevenueData.isEmpty() ||
-                roomRevenueData.isEmpty() || serviceRevenueData.isEmpty()) {
+        if (labels == null || totalRevenueData == null || serviceRevenueData == null ||
+                labels.isEmpty() || totalRevenueData.isEmpty() || serviceRevenueData.isEmpty()) {
             JLabel errorLabel = new JLabel("Không có dữ liệu để hiển thị", SwingConstants.CENTER);
             errorLabel.setForeground(Color.RED);
             add(errorLabel, BorderLayout.CENTER);
@@ -84,16 +79,12 @@ public class CustomLineChartPanel extends JPanel {
         Map<Double, String> yAxisLabels = new HashMap<>();
         double maxRevenue = Math.max(
                 totalRevenueData.stream().max(Double::compare).orElse(24000000.0),
-                Math.max(
-                        roomRevenueData.stream().max(Double::compare).orElse(24000000.0),
-                        serviceRevenueData.stream().max(Double::compare).orElse(24000000.0)
-                )
+                serviceRevenueData.stream().max(Double::compare).orElse(24000000.0)
         );
         double step = maxRevenue / 12;
         for (double i = 0; i <= maxRevenue + step; i += step) {
             yAxisLabels.put(i, df.format(i / 1000000));
         }
-       // styler.setYAxisLabelOverrideMap(yAxisLabels);
 
         // Series 1: Doanh thu tổng (màu đỏ cam)
         org.knowm.xchart.CategorySeries totalSeries = chart.addSeries("Doanh thu tổng", labels, totalRevenueData);
@@ -102,14 +93,7 @@ public class CustomLineChartPanel extends JPanel {
         totalSeries.setMarkerColor(new Color(255, 99, 71)); // Đỏ cam
         totalSeries.setLineColor(new Color(255, 99, 71));
 
-        // Series 2: Doanh thu phòng (màu xanh dương)
-        org.knowm.xchart.CategorySeries roomSeries = chart.addSeries("Doanh thu phòng", labels, roomRevenueData);
-        roomSeries.setLineStyle(new BasicStroke(2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-        roomSeries.setMarker(SeriesMarkers.CIRCLE);
-        roomSeries.setMarkerColor(new Color(70, 130, 180)); // Xanh dương
-        roomSeries.setLineColor(new Color(70, 130, 180));
-
-        // Series 3: Doanh thu dịch vụ (màu xanh lá)
+        // Series 2: Doanh thu dịch vụ (màu xanh lá)
         org.knowm.xchart.CategorySeries serviceSeries = chart.addSeries("Doanh thu dịch vụ", labels, serviceRevenueData);
         serviceSeries.setLineStyle(new BasicStroke(2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         serviceSeries.setMarker(SeriesMarkers.SQUARE);
