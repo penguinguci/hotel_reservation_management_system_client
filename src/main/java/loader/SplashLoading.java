@@ -99,12 +99,12 @@ public class SplashLoading extends JFrame {
 
                 // Background
                 g2d.setColor(new Color(255, 255, 255, 50));
-                g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 5, 5);
+                g2d.fillRoundRect(0, 0, getWidth(), 5, 5, 5);
 
                 // Progress
                 int progressWidth = (int) ((getWidth() * getValue()) / 100.0);
                 g2d.setColor(Color.WHITE);
-                g2d.fillRoundRect(0, 0, progressWidth, getHeight(), 5, 5);
+                g2d.fillRoundRect(0, 0, progressWidth, 5, 5, 5);
 
                 g2d.dispose();
             }
@@ -116,7 +116,7 @@ public class SplashLoading extends JFrame {
         bottomPanel.add(jProgressBar1, gbc);
 
         // Copyright label
-        jLabel3 = new JLabel("© 2025 Melody Hotel Management System", SwingConstants.CENTER);
+        jLabel3 = new JLabel("© 2025 Melody Hotel Management System by penguinguci - ztnosleep", SwingConstants.CENTER);
         jLabel3.setFont(new Font("Segoe UI", Font.PLAIN, 11));
         jLabel3.setForeground(new Color(200, 200, 200));
         gbc.gridy = 2;

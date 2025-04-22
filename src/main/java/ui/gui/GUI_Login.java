@@ -9,6 +9,7 @@ import entities.Account;
 import interfaces.AccountDAO;
 import org.mindrot.jbcrypt.BCrypt;
 import utils.CurrentAccount;
+import utils.UpdatePasswords;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -28,8 +29,11 @@ public class GUI_Login extends JFrame {
     public GUI_Login() {
         setUndecorated(true); // Ẩn các nút điều khiển
         setShape(new RoundRectangle2D.Double(0, 0, 800, 500, 30, 30));
+        UpdatePasswords hashPass = new UpdatePasswords();
+        hashPass.HashedPassword();
         initComponents();
         setLocationRelativeTo(null);
+
     }
 
     @Override

@@ -7,11 +7,10 @@ import jakarta.persistence.Persistence;
 import entities.Account;
 
 public class UpdatePasswords {
-    public static void main(String[] args) {
+    public void HashedPassword() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("mariadb");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-
         // Lấy tất cả tài khoản
         var accounts = em.createQuery("SELECT a FROM Account a", Account.class).getResultList();
 
