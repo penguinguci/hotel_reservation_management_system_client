@@ -57,6 +57,7 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
         initComboboxGender();
         initComboboxGenderSearch();
         loadStaffData();
+        btnStatus.addActionListener(e -> updateStatus());
     }
 
     private void initTableListener() {
@@ -92,55 +93,56 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnl_Title = new JPanel();
-        jLabel1 = new JLabel();
-        pnl_Infor = new JPanel();
-        pnl_Input = new JPanel();
-        pnl_InforLeft = new JPanel();
-        jPanel1 = new JPanel();
-        lbl_FirstName = new JLabel();
-        lbl_Phone = new JLabel();
-        lbl_Username = new JLabel();
-        lbl_Gender = new JLabel();
-        lbl_BirthDate = new JLabel();
-        jPanel2 = new JPanel();
-        txt_FirstName = new JTextField();
-        txt_Phone = new JTextField();
-        txt_Username = new JTextField();
+        pnl_Title = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pnl_Infor = new javax.swing.JPanel();
+        pnl_Input = new javax.swing.JPanel();
+        pnl_InforLeft = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        lbl_FirstName = new javax.swing.JLabel();
+        lbl_Phone = new javax.swing.JLabel();
+        lbl_Username = new javax.swing.JLabel();
+        lbl_Gender = new javax.swing.JLabel();
+        lbl_BirthDate = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        txt_FirstName = new javax.swing.JTextField();
+        txt_Phone = new javax.swing.JTextField();
+        txt_Username = new javax.swing.JTextField();
         cbx_Gender = new ui.components.combobox.StyledComboBox();
         calendar_BirthDate = new ui.components.calendar.CustomCalendar();
-        pnl_InforRight = new JPanel();
-        jPanel3 = new JPanel();
-        lbl_LastName = new JLabel();
-        lbl_Email = new JLabel();
-        lbl_Password = new JLabel();
-        lbl_Address = new JLabel();
-        lbl_JoinDate = new JLabel();
-        jPanel4 = new JPanel();
-        txt_LastName = new JTextField();
-        txt_Email = new JTextField();
-        txt_Password = new JTextField();
-        txt_Address = new JTextField();
+        pnl_InforRight = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        lbl_LastName = new javax.swing.JLabel();
+        lbl_Email = new javax.swing.JLabel();
+        lbl_Password = new javax.swing.JLabel();
+        lbl_Address = new javax.swing.JLabel();
+        lbl_JoinDate = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        txt_LastName = new javax.swing.JTextField();
+        txt_Email = new javax.swing.JTextField();
+        txt_Password = new javax.swing.JTextField();
+        txt_Address = new javax.swing.JTextField();
         calendar_JoinDate = new ui.components.calendar.CustomCalendar();
-        pnl_Image = new JPanel();
+        pnl_Image = new javax.swing.JPanel();
         lbl_Avatar = new ui.components.label.LabelImage();
         btn_UploadImage = new ui.components.button.ButtonCustom();
         btn_Clear = new ui.components.button.ButtonCancelCustom();
-        pnl_Search = new JPanel();
-        jPanel5 = new JPanel();
-        lbl_StaffIDSearch = new JLabel();
-        lbl_NameSearch = new JLabel();
-        lbl_PhoneSearch = new JLabel();
-        lbl_GenderSearch = new JLabel();
-        jPanel6 = new JPanel();
-        txt_IDSearch = new JTextField();
-        txt_NameSearch = new JTextField();
-        txt_PhoneSearch = new JTextField();
+        btnStatus = new ui.components.button.ButtonCompleteCustom();
+        pnl_Search = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lbl_StaffIDSearch = new javax.swing.JLabel();
+        lbl_NameSearch = new javax.swing.JLabel();
+        lbl_PhoneSearch = new javax.swing.JLabel();
+        lbl_GenderSearch = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        txt_IDSearch = new javax.swing.JTextField();
+        txt_NameSearch = new javax.swing.JTextField();
+        txt_PhoneSearch = new javax.swing.JTextField();
         cbx_GenderSearch = new ui.components.combobox.StyledComboBox();
         btn_Search = new ui.components.button.ButtonCustom();
-        pnl_ListStaff = new JPanel();
-        table = new CustomTableButton();
-        pnl_GroupButton = new JPanel();
+        pnl_ListStaff = new javax.swing.JPanel();
+        table = new ui.components.table.CustomTableButton();
+        pnl_GroupButton = new javax.swing.JPanel();
         btn_Add = new ui.components.button.ButtonCustom();
         btn_Update = new ui.components.button.ButtonCustom();
         btn_Import = new ui.components.button.ButtonCustom();
@@ -154,12 +156,12 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 255));
-        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Quản lý nhân viên");
         pnl_Title.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         pnl_Infor.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_Infor.setBorder(BorderFactory.createTitledBorder(null, "Thông tin nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(153, 153, 255))); // NOI18N
+        pnl_Infor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(153, 153, 255))); // NOI18N
 
         pnl_Input.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -192,35 +194,35 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
         jPanel2.setLayout(new java.awt.GridLayout(5, 1, 0, 12));
 
         txt_FirstName.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_FirstName.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_FirstName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel2.add(txt_FirstName);
 
         txt_Phone.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_Phone.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_Phone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel2.add(txt_Phone);
 
         txt_Username.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_Username.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_Username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel2.add(txt_Username);
 
         cbx_Gender.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jPanel2.add(cbx_Gender);
         jPanel2.add(calendar_BirthDate);
 
-        GroupLayout pnl_InforLeftLayout = new GroupLayout(pnl_InforLeft);
+        javax.swing.GroupLayout pnl_InforLeftLayout = new javax.swing.GroupLayout(pnl_InforLeft);
         pnl_InforLeft.setLayout(pnl_InforLeftLayout);
         pnl_InforLeftLayout.setHorizontalGroup(
-            pnl_InforLeftLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            pnl_InforLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_InforLeftLayout.createSequentialGroup()
-                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_InforLeftLayout.setVerticalGroup(
-            pnl_InforLeftLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            pnl_InforLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnl_InforRight.setBackground(new java.awt.Color(255, 255, 255));
@@ -253,137 +255,145 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
         jPanel4.setLayout(new java.awt.GridLayout(5, 1, 0, 12));
 
         txt_LastName.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_LastName.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txt_LastName.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        txt_LastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_LastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_LastNameActionPerformed(evt);
             }
         });
         jPanel4.add(txt_LastName);
 
         txt_Email.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_Email.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_Email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel4.add(txt_Email);
 
         txt_Password.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_Password.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txt_Password.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        txt_Password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_Password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_PasswordActionPerformed(evt);
             }
         });
         jPanel4.add(txt_Password);
 
         txt_Address.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_Address.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_Address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel4.add(txt_Address);
         jPanel4.add(calendar_JoinDate);
 
-        GroupLayout pnl_InforRightLayout = new GroupLayout(pnl_InforRight);
+        javax.swing.GroupLayout pnl_InforRightLayout = new javax.swing.GroupLayout(pnl_InforRight);
         pnl_InforRight.setLayout(pnl_InforRightLayout);
         pnl_InforRightLayout.setHorizontalGroup(
-            pnl_InforRightLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            pnl_InforRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 347, Short.MAX_VALUE)
-            .addGroup(pnl_InforRightLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_InforRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_InforRightLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(266, Short.MAX_VALUE)))
-            .addGroup(pnl_InforRightLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(GroupLayout.Alignment.TRAILING, pnl_InforRightLayout.createSequentialGroup()
+            .addGroup(pnl_InforRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_InforRightLayout.createSequentialGroup()
                     .addContainerGap(109, Short.MAX_VALUE)
-                    .addComponent(jPanel4, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
         pnl_InforRightLayout.setVerticalGroup(
-            pnl_InforRightLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            pnl_InforRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(pnl_InforRightLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
-            .addGroup(pnl_InforRightLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+            .addGroup(pnl_InforRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+            .addGroup(pnl_InforRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
         );
 
-        GroupLayout pnl_InputLayout = new GroupLayout(pnl_Input);
+        javax.swing.GroupLayout pnl_InputLayout = new javax.swing.GroupLayout(pnl_Input);
         pnl_Input.setLayout(pnl_InputLayout);
         pnl_InputLayout.setHorizontalGroup(
-            pnl_InputLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            pnl_InputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_InputLayout.createSequentialGroup()
-                .addComponent(pnl_InforLeft, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_InforLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnl_InforRight, GroupLayout.PREFERRED_SIZE, 347, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnl_InforRight, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         pnl_InputLayout.setVerticalGroup(
-            pnl_InputLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_InforLeft, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnl_InforRight, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            pnl_InputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_InforLeft, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_InforRight, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnl_Image.setBackground(new java.awt.Color(255, 255, 255));
 
         btn_UploadImage.setText("Thêm ảnh");
-        btn_UploadImage.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        btn_UploadImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_UploadImageActionPerformed(evt);
             }
         });
 
-        GroupLayout pnl_ImageLayout = new GroupLayout(pnl_Image);
+        javax.swing.GroupLayout pnl_ImageLayout = new javax.swing.GroupLayout(pnl_Image);
         pnl_Image.setLayout(pnl_ImageLayout);
         pnl_ImageLayout.setHorizontalGroup(
-            pnl_ImageLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, pnl_ImageLayout.createSequentialGroup()
+            pnl_ImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_ImageLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_Avatar, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(lbl_Avatar, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
             .addGroup(pnl_ImageLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(btn_UploadImage, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_UploadImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 21, Short.MAX_VALUE))
         );
         pnl_ImageLayout.setVerticalGroup(
-            pnl_ImageLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            pnl_ImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_ImageLayout.createSequentialGroup()
-                .addComponent(lbl_Avatar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_UploadImage, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addComponent(lbl_Avatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_UploadImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         btn_Clear.setText("Xóa trắng");
-        btn_Clear.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        btn_Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ClearActionPerformed(evt);
             }
         });
 
-        GroupLayout pnl_InforLayout = new GroupLayout(pnl_Infor);
+        btnStatus.setText("Nghỉ làm");
+        btnStatus.setMaximumSize(new java.awt.Dimension(104, 26));
+        btnStatus.setMinimumSize(new java.awt.Dimension(104, 26));
+
+        javax.swing.GroupLayout pnl_InforLayout = new javax.swing.GroupLayout(pnl_Infor);
         pnl_Infor.setLayout(pnl_InforLayout);
         pnl_InforLayout.setHorizontalGroup(
-            pnl_InforLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            pnl_InforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_InforLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_InforLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_InforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_InforLayout.createSequentialGroup()
-                        .addComponent(btn_Clear, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnl_InforLayout.createSequentialGroup()
-                        .addComponent(pnl_Input, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnl_Input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(0, 0, 0)
-                        .addComponent(pnl_Image, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(pnl_Image, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         pnl_InforLayout.setVerticalGroup(
-            pnl_InforLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            pnl_InforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_InforLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_InforLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnl_Image, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnl_Input, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnl_InforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_Input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(btn_Clear, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                .addGroup(pnl_InforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(btnStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pnl_Search.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_Search.setBorder(BorderFactory.createTitledBorder(null, "Tìm kiếm nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(153, 153, 255))); // NOI18N
+        pnl_Search.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(153, 153, 255))); // NOI18N
         pnl_Search.setPreferredSize(new java.awt.Dimension(360, 29));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -409,57 +419,57 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
         jPanel6.setLayout(new java.awt.GridLayout(4, 1, 0, 15));
 
         txt_IDSearch.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_IDSearch.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_IDSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel6.add(txt_IDSearch);
 
         txt_NameSearch.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_NameSearch.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txt_NameSearch.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        txt_NameSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_NameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_NameSearchActionPerformed(evt);
             }
         });
         jPanel6.add(txt_NameSearch);
 
         txt_PhoneSearch.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txt_PhoneSearch.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txt_PhoneSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel6.add(txt_PhoneSearch);
 
         cbx_GenderSearch.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jPanel6.add(cbx_GenderSearch);
 
         btn_Search.setText("Tìm kiếm");
-        btn_Search.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        btn_Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_SearchActionPerformed(evt);
             }
         });
 
-        GroupLayout pnl_SearchLayout = new GroupLayout(pnl_Search);
+        javax.swing.GroupLayout pnl_SearchLayout = new javax.swing.GroupLayout(pnl_Search);
         pnl_Search.setLayout(pnl_SearchLayout);
         pnl_SearchLayout.setHorizontalGroup(
-            pnl_SearchLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, pnl_SearchLayout.createSequentialGroup()
+            pnl_SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_SearchLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_SearchLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                .addGroup(pnl_SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnl_SearchLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_Search, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnl_SearchLayout.createSequentialGroup()
-                        .addComponent(jPanel5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12))
         );
         pnl_SearchLayout.setVerticalGroup(
-            pnl_SearchLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            pnl_SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_SearchLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_SearchLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_Search, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnl_SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_ListStaff.setBackground(new java.awt.Color(255, 255, 255));
@@ -473,65 +483,65 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
         pnl_GroupButton.setLayout(new java.awt.GridLayout(4, 1, 0, 20));
 
         btn_Add.setText("Thêm");
-        btn_Add.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        btn_Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_AddActionPerformed(evt);
             }
         });
         pnl_GroupButton.add(btn_Add);
 
         btn_Update.setText("Cập nhật");
-        btn_Update.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        btn_Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_UpdateActionPerformed(evt);
             }
         });
         pnl_GroupButton.add(btn_Update);
 
         btn_Import.setText("Import");
-        btn_Import.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        btn_Import.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ImportActionPerformed(evt);
             }
         });
         pnl_GroupButton.add(btn_Import);
 
         btn_Export.setText("Export");
-        btn_Export.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        btn_Export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ExportActionPerformed(evt);
             }
         });
         pnl_GroupButton.add(btn_Export);
 
-        GroupLayout layout = new GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_Title, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnl_Infor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_Search, GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
+                .addComponent(pnl_Infor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnl_Search, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnl_ListStaff, GroupLayout.PREFERRED_SIZE, 1102, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_GroupButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_ListStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 1102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnl_GroupButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnl_Title, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_Title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnl_Infor, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnl_Search, GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_ListStaff, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_Infor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_Search, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_ListStaff, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnl_GroupButton, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnl_GroupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -577,10 +587,58 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
         clearForm();
     }//GEN-LAST:event_btn_ClearActionPerformed
     private void btnResetActionPerformed(ActionEvent evt) {
-
     }
 
+    void updateStatus() throws RemoteException{
+        int select = table.getTable().getSelectedRow();
+        if(select != -1){
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên để cập nhật trạng thái");
+            return;
+        }
 
+        Object statusObj = table.getTable().getValueAt(select, 9);
+        String staffId = table.getTable().getValueAt(select, 0).toString();
+
+        // Chuyển đổi giá trị trạng thái thành boolean
+        boolean currentStatus;
+        if (statusObj instanceof Boolean) {
+            currentStatus = (Boolean) statusObj;
+        } else {
+            // Nếu trạng thái hiển thị dạng chuỗi (do renderer), chuyển đổi về boolean
+            currentStatus = statusObj.toString().equals("Đang làm");
+        }
+
+        try {
+            // Kết nối với DAO hoặc service để cập nhật trạng thái
+            StaffDAO staffDAO = new StaffDAOImpl(); // Giả sử bạn có một StaffDAO để xử lý dữ liệu
+
+            if (currentStatus) {
+                // Chuyển trạng thái từ true (Đang làm) sang false (Nghỉ làm)
+                staffDAO.updateStatus(staffId, false);
+
+                // Cập nhật trạng thái trên bảng
+                // Nếu bảng hiển thị dạng boolean
+                table.getTable().setValueAt(false, select, 9);
+                // Nếu bảng hiển thị dạng chuỗi (do renderer), bạn không cần setValueAt mà renderer sẽ tự xử lý
+
+                // Vô hiệu hóa nút btnStatus
+                btnStatus.setEnabled(false);
+
+                // Vô hiệu hóa chỉnh sửa thông tin nhân viên trên bảng
+                table.getTable().setEnabled(false); // Vô hiệu hóa toàn bộ bảng
+                // Hoặc nếu chỉ muốn vô hiệu hóa chỉnh sửa cho dòng đã chọn, bạn có thể dùng TableModel tùy chỉnh
+                JOptionPane.showMessageDialog(this, "Đã cập nhật trạng thái nhân viên thành 'Nghỉ làm'!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // Nếu trạng thái là false (Nghỉ làm), chỉ cần vô hiệu hóa nút và không cho chỉnh sửa
+                btnStatus.setEnabled(false);
+                table.getTable().setEnabled(false); // Vô hiệu hóa bảng
+                JOptionPane.showMessageDialog(this, "Nhân viên đã nghỉ làm, không thể chỉnh sửa thông tin!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật trạng thái: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // Hàm upload ảnh
     private void uploadImage() {
@@ -1045,6 +1103,7 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private ui.components.button.ButtonCompleteCustom btnStatus;
     private ui.components.button.ButtonCustom btn_Add;
     private ui.components.button.ButtonCancelCustom btn_Clear;
     private ui.components.button.ButtonCustom btn_Export;
@@ -1056,48 +1115,48 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
     private ui.components.calendar.CustomCalendar calendar_JoinDate;
     private ui.components.combobox.StyledComboBox cbx_Gender;
     private ui.components.combobox.StyledComboBox cbx_GenderSearch;
-    private JLabel jLabel1;
-    private JPanel jPanel1;
-    private JPanel jPanel2;
-    private JPanel jPanel3;
-    private JPanel jPanel4;
-    private JPanel jPanel5;
-    private JPanel jPanel6;
-    private JLabel lbl_Address;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lbl_Address;
     private ui.components.label.LabelImage lbl_Avatar;
-    private JLabel lbl_BirthDate;
-    private JLabel lbl_Email;
-    private JLabel lbl_FirstName;
-    private JLabel lbl_Gender;
-    private JLabel lbl_GenderSearch;
-    private JLabel lbl_JoinDate;
-    private JLabel lbl_LastName;
-    private JLabel lbl_NameSearch;
-    private JLabel lbl_Password;
-    private JLabel lbl_Phone;
-    private JLabel lbl_PhoneSearch;
-    private JLabel lbl_StaffIDSearch;
-    private JLabel lbl_Username;
-    private JPanel pnl_GroupButton;
-    private JPanel pnl_Image;
-    private JPanel pnl_Infor;
-    private JPanel pnl_InforLeft;
-    private JPanel pnl_InforRight;
-    private JPanel pnl_Input;
-    private JPanel pnl_ListStaff;
-    private JPanel pnl_Search;
-    private JPanel pnl_Title;
-    private CustomTableButton table;
-    private JTextField txt_Address;
-    private JTextField txt_Email;
-    private JTextField txt_FirstName;
-    private JTextField txt_IDSearch;
-    private JTextField txt_LastName;
-    private JTextField txt_NameSearch;
-    private JTextField txt_Password;
-    private JTextField txt_Phone;
-    private JTextField txt_PhoneSearch;
-    private JTextField txt_Username;
+    private javax.swing.JLabel lbl_BirthDate;
+    private javax.swing.JLabel lbl_Email;
+    private javax.swing.JLabel lbl_FirstName;
+    private javax.swing.JLabel lbl_Gender;
+    private javax.swing.JLabel lbl_GenderSearch;
+    private javax.swing.JLabel lbl_JoinDate;
+    private javax.swing.JLabel lbl_LastName;
+    private javax.swing.JLabel lbl_NameSearch;
+    private javax.swing.JLabel lbl_Password;
+    private javax.swing.JLabel lbl_Phone;
+    private javax.swing.JLabel lbl_PhoneSearch;
+    private javax.swing.JLabel lbl_StaffIDSearch;
+    private javax.swing.JLabel lbl_Username;
+    private javax.swing.JPanel pnl_GroupButton;
+    private javax.swing.JPanel pnl_Image;
+    private javax.swing.JPanel pnl_Infor;
+    private javax.swing.JPanel pnl_InforLeft;
+    private javax.swing.JPanel pnl_InforRight;
+    private javax.swing.JPanel pnl_Input;
+    private javax.swing.JPanel pnl_ListStaff;
+    private javax.swing.JPanel pnl_Search;
+    private javax.swing.JPanel pnl_Title;
+    private ui.components.table.CustomTableButton table;
+    private javax.swing.JTextField txt_Address;
+    private javax.swing.JTextField txt_Email;
+    private javax.swing.JTextField txt_FirstName;
+    private javax.swing.JTextField txt_IDSearch;
+    private javax.swing.JTextField txt_LastName;
+    private javax.swing.JTextField txt_NameSearch;
+    private javax.swing.JTextField txt_Password;
+    private javax.swing.JTextField txt_Phone;
+    private javax.swing.JTextField txt_PhoneSearch;
+    private javax.swing.JTextField txt_Username;
     // End of variables declaration//GEN-END:variables
 
 }

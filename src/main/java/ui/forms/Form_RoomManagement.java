@@ -516,7 +516,7 @@ public class Form_RoomManagement extends JPanel {
         });
 
 
-        btnManageService.setText("Cập nhật");
+        btnManageService.setText("Quản lý dịch vụ");
         btnManageService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnManageServiceActionPerformed(evt);
