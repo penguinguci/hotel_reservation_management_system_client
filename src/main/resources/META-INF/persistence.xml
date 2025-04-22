@@ -4,15 +4,16 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
     <persistence-unit name="mariadb">
-<!--        <class>entities.Account</class>-->
-<!--        <class>entities.Customer</class>-->
-<!--        <class>entities.OrderDetails</class>-->
-<!--        <class>entities.Orders</class>-->
-<!--        <class>entities.Reservation</class>-->
-<!--        <class>entities.ReservationDetails</class>-->
-<!--        <class>entities.Room</class>-->
-<!--        <class>entities.Service</class>-->
-<!--        <class>entities.Staff</class>-->
+        <class>entities.Account</class>
+        <class>entities.Customer</class>
+        <class>entities.OrderDetails</class>
+        <class>entities.Orders</class>
+        <class>entities.Reservation</class>
+        <class>entities.ReservationDetails</class>
+        <class>entities.Room</class>
+        <class>entities.Service</class>
+        <class>entities.Staff</class>
+        <class>entities.RoomType</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver"
@@ -28,15 +29,15 @@
         </properties>
     </persistence-unit>
     <persistence-unit name="mssql">
-<!--        <class>entities.Account</class>-->
-<!--        <class>entities.Customer</class>-->
-<!--        <class>entities.OrderDetails</class>-->
-<!--        <class>entities.Orders</class>-->
-<!--        <class>entities.Reservation</class>-->
-<!--        <class>entities.ReservationDetails</class>-->
-<!--        <class>entities.Room</class>-->
-<!--        <class>entities.Service</class>-->
-<!--        <class>entities.Staff</class>-->
+        <class>entities.Account</class>
+        <class>entities.Customer</class>
+        <class>entities.OrderDetails</class>
+        <class>entities.Orders</class>
+        <class>entities.Reservation</class>
+        <class>entities.ReservationDetails</class>
+        <class>entities.Room</class>
+        <class>entities.Service</class>
+        <class>entities.Staff</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.url"
