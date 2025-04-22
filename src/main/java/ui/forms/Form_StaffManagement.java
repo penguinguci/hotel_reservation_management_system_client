@@ -40,6 +40,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -65,6 +68,7 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
             }
         });
         addTableSelectionListener();
+
     }
 
     private void initTableListener() {
@@ -740,12 +744,14 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
 
     // Hàm Validate dữ liệu
     private boolean validateInput() {
+        // Kiểm tra họ và tên
         if (txt_FirstName.getText().trim().isEmpty() || txt_LastName.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Họ và tên không được để trống!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             txt_FirstName.requestFocus();
             return false;
         }
 
+        // Kiểm tra số điện thoại
         String phone = txt_Phone.getText().trim();
         if (phone.isEmpty() || !phone.matches(RegexPattern.PHONE_VN)) {
             JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -753,6 +759,7 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
             return false;
         }
 
+        // Kiểm tra email
         String email = txt_Email.getText().trim();
         if (!email.isEmpty() && !email.matches(RegexPattern.EMAIL)) {
             JOptionPane.showMessageDialog(this, "Email không hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -760,15 +767,44 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
             return false;
         }
 
-
+        // Kiểm tra ngày sinh
         if (calendar_BirthDate.getSelectedDate() == null) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn ngày sinh!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             calendar_BirthDate.requestFocus();
             return false;
         }
 
+        // Kiểm tra tuổi > 18
+        Date birthDate = calendar_BirthDate.getSelectedDate();
+        Date currentDate = new Date(); // Ngày hiện tại
+        long diffInMillies = currentDate.getTime() - birthDate.getTime();
+        long diffInYears = diffInMillies / (1000L * 60 * 60 * 24 * 365); // Chuyển đổi thành năm
+
+        if (diffInYears < 18) {
+            JOptionPane.showMessageDialog(this, "Nhân viên phải trên 18 tuổi!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            calendar_BirthDate.requestFocus();
+            return false;
+        }
+
+        // Kiểm tra ngày vào làm
+        if (calendar_JoinDate.getSelectedDate() == null) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn ngày vào làm!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            calendar_JoinDate.requestFocus();
+            return false;
+        }
+
+        // Kiểm tra ngày vào làm <= ngày hiện tại
+        Date hireDate = calendar_JoinDate.getSelectedDate();
+        if (hireDate.after(currentDate)) {
+            JOptionPane.showMessageDialog(this, "Ngày vào làm phải trước hoặc bằng ngày hiện tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            calendar_JoinDate.requestFocus();
+            return false;
+        }
+
         return true;
     }
+
+
 
     private void clearForm() {
         txt_FirstName.setText("");
