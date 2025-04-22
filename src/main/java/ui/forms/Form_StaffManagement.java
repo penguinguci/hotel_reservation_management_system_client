@@ -57,7 +57,13 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
         initComboboxGender();
         initComboboxGenderSearch();
         loadStaffData();
-        btnStatus.addActionListener(e -> updateStatus());
+        btnStatus.addActionListener(e -> {
+            try {
+                updateStatus();
+            } catch (RemoteException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     private void initTableListener() {
@@ -614,7 +620,7 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
 
             if (currentStatus) {
                 // Chuyển trạng thái từ true (Đang làm) sang false (Nghỉ làm)
-                staffDAO.updateStatus(staffId, false);
+                ((StaffDAOImpl) staffDAO).updateStatus(staffId, false);
 
                 // Cập nhật trạng thái trên bảng
                 // Nếu bảng hiển thị dạng boolean
