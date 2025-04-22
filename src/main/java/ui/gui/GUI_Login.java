@@ -33,7 +33,6 @@ public class GUI_Login extends JFrame {
         hashPass.hashedPassword();
         initComponents();
         setLocationRelativeTo(null);
-
     }
 
     @Override
@@ -243,10 +242,16 @@ public class GUI_Login extends JFrame {
         Account account = accountDAO.getAccount(username);
         if (account != null && BCrypt.checkpw(password, account.getPassword())) {
             CurrentAccount.setCurrentAccount(account);
+            if(account.getStaff().isStatus()){
             //JOptionPane.showMessageDialog(this, "Login Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
             GUI_Main guiMain = new GUI_Main();
             guiMain.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Nhân viên nghỉ làm không được đăng nhập vào hệ thống", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Đăng nhập thất bại", "Warning", JOptionPane.INFORMATION_MESSAGE);
         }

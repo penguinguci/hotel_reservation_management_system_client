@@ -64,6 +64,7 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
                 throw new RuntimeException(ex);
             }
         });
+        addTableSelectionListener();
     }
 
     private void initTableListener() {
@@ -595,55 +596,116 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
     private void btnResetActionPerformed(ActionEvent evt) {
     }
 
-    void updateStatus() throws RemoteException{
+    void updateStatus() throws RemoteException {
         int select = table.getTable().getSelectedRow();
-        if(select != -1){
+        if (select == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên để cập nhật trạng thái");
             return;
         }
+        String role = table.getTable().getValueAt(select, 8).toString();
 
-        Object statusObj = table.getTable().getValueAt(select, 9);
-        String staffId = table.getTable().getValueAt(select, 0).toString();
-
-        // Chuyển đổi giá trị trạng thái thành boolean
-        boolean currentStatus;
-        if (statusObj instanceof Boolean) {
-            currentStatus = (Boolean) statusObj;
-        } else {
-            // Nếu trạng thái hiển thị dạng chuỗi (do renderer), chuyển đổi về boolean
-            currentStatus = statusObj.toString().equals("Đang làm");
+        // Kiểm tra nếu role là "Quản lý"
+        if (role.equals("Nhân viên quản lý")) {
+            JOptionPane.showMessageDialog(this, "Không được phép cập nhật trạng thái cho Quản lý!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+            return;
         }
+            int option = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn cho nhân viên này nghỉ không?","Thông báo", JOptionPane.OK_CANCEL_OPTION);
+            if(option == JOptionPane.OK_OPTION){
+                Object statusObj = table.getTable().getValueAt(select, 9);
+                String staffId = table.getTable().getValueAt(select, 0).toString();
 
-        try {
-            // Kết nối với DAO hoặc service để cập nhật trạng thái
-            StaffDAO staffDAO = new StaffDAOImpl(); // Giả sử bạn có một StaffDAO để xử lý dữ liệu
+                // Chuyển đổi giá trị trạng thái thành boolean
+                boolean currentStatus;
+                if (statusObj instanceof Boolean) {
+                    currentStatus = (Boolean) statusObj;
+                } else {
+                    // Nếu trạng thái hiển thị dạng chuỗi (do renderer), chuyển đổi về boolean
+                    currentStatus = statusObj.toString().equals("Đang làm");
+                }
 
-            if (currentStatus) {
-                // Chuyển trạng thái từ true (Đang làm) sang false (Nghỉ làm)
-                ((StaffDAOImpl) staffDAO).updateStatus(staffId, false);
+                try {
+                    // Kết nối với DAO hoặc service để cập nhật trạng thái
+                    StaffDAO staffDAO = new StaffDAOImpl();
 
-                // Cập nhật trạng thái trên bảng
-                // Nếu bảng hiển thị dạng boolean
-                table.getTable().setValueAt(false, select, 9);
-                // Nếu bảng hiển thị dạng chuỗi (do renderer), bạn không cần setValueAt mà renderer sẽ tự xử lý
+                    if (currentStatus) {
+                        // Chuyển trạng thái từ true (Đang làm) sang false (Nghỉ làm)
+                        ((StaffDAOImpl) staffDAO).updateStatus(staffId, false);
 
-                // Vô hiệu hóa nút btnStatus
-                btnStatus.setEnabled(false);
+                        // Cập nhật trạng thái trên bảng
+                        table.getTable().setValueAt("Nghỉ làm", select, 9);
 
-                // Vô hiệu hóa chỉnh sửa thông tin nhân viên trên bảng
-                table.getTable().setEnabled(false); // Vô hiệu hóa toàn bộ bảng
-                // Hoặc nếu chỉ muốn vô hiệu hóa chỉnh sửa cho dòng đã chọn, bạn có thể dùng TableModel tùy chỉnh
-                JOptionPane.showMessageDialog(this, "Đã cập nhật trạng thái nhân viên thành 'Nghỉ làm'!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                // Nếu trạng thái là false (Nghỉ làm), chỉ cần vô hiệu hóa nút và không cho chỉnh sửa
-                btnStatus.setEnabled(false);
-                table.getTable().setEnabled(false); // Vô hiệu hóa bảng
-                JOptionPane.showMessageDialog(this, "Nhân viên đã nghỉ làm, không thể chỉnh sửa thông tin!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        // Vô hiệu hóa nút btnStatus
+                        btnStatus.setEnabled(false);
+
+                        // Vô hiệu hóa chỉnh sửa thông tin trên các field
+                        disableFields();
+
+                        JOptionPane.showMessageDialog(this, "Đã cập nhật trạng thái nhân viên thành 'Nghỉ làm'!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        // Nếu trạng thái là false (Nghỉ làm), vô hiệu hóa nút
+                        btnStatus.setEnabled(false);
+                        // Vô hiệu hóa chỉnh sửa thông tin trên các field
+                        disableFields();
+                        JOptionPane.showMessageDialog(this, "Nhân viên đã nghỉ làm, không thể chỉnh sửa thông tin!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật trạng thái: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật trạng thái: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
+    }
+    private void addTableSelectionListener() {
+        table.getTable().getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) { // Tránh xử lý nhiều lần khi chọn
+                int selectedRow = table.getTable().getSelectedRow();
+                if (selectedRow != -1) {
+                    Object statusObj = table.getTable().getValueAt(selectedRow, 9);
+                    boolean currentStatus;
+                    if (statusObj instanceof Boolean) {
+                        currentStatus = (Boolean) statusObj;
+                    } else {
+                        currentStatus = statusObj.toString().equals("Đang làm");
+                    }
+
+                    if (currentStatus) {
+                        // Nếu nhân viên đang làm, cho phép chỉnh sửa các field và bật btnStatus
+                        enableFields();
+                        btnStatus.setEnabled(true);
+                    } else {
+                        // Nếu nhân viên đã nghỉ làm, vô hiệu hóa chỉnh sửa và btnStatus
+                        disableFields();
+                        btnStatus.setEnabled(false);
+                    }
+                }
+            }
+        });
+    }
+    private void disableFields() {
+        txt_FirstName.setEnabled(false);
+        txt_LastName.setEnabled(false);
+        txt_Email.setEnabled(false);
+        txt_Address.setEnabled(false);
+        txt_Password.setEnabled(false);
+        txt_Phone.setEnabled(false);
+        txt_Username.setEnabled(false);
+        cbx_Gender.setEnabled(false);
+        calendar_BirthDate.setEnabled(false);
+        calendar_JoinDate.setEnabled(false);
+        // Vô hiệu hóa các field khác nếu có
+    }
+
+    private void enableFields() {
+        txt_FirstName.setEnabled(true);
+        txt_LastName.setEnabled(true);
+        txt_Email.setEnabled(true);
+        txt_Address.setEnabled(true);
+        txt_Password.setEnabled(true);
+        txt_Phone.setEnabled(true);
+        txt_Username.setEnabled(true);
+        cbx_Gender.setEnabled(true);
+        calendar_BirthDate.setEnabled(true);
+        calendar_JoinDate.setEnabled(true);
+        // Kích hoạt các field khác nếu có
     }
 
     // Hàm upload ảnh
@@ -727,7 +789,7 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
         txt_PhoneSearch.setText("");
         cbx_GenderSearch.setSelectedIndex(0);
         txt_IDSearch.setText("");
-
+        enableFields();
         loadStaffData();
     }
 
