@@ -1110,9 +1110,23 @@ public class Tab_Booking extends JPanel {
             Date checkinDate = calendar_Checkin.getSelectedDate();
             Date checkoutDate = calendar_Checout.getSelectedDate();
 
+            // Lấy ngày hiện tại và chuẩn hóa về 0h
+            Calendar calendarToday = Calendar.getInstance();
+            calendarToday.set(Calendar.HOUR_OF_DAY, 0);
+            calendarToday.set(Calendar.MINUTE, 0);
+            calendarToday.set(Calendar.SECOND, 0);
+            calendarToday.set(Calendar.MILLISECOND, 0);
+            Date today = calendarToday.getTime();
+
             // Validate ngày nếu có chọn
             if (checkinDate != null && checkoutDate != null && checkinDate.after(checkoutDate)) {
                 JOptionPane.showMessageDialog(this, "Ngày check-out phải sau ngày check-in", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Kiểm tra ngày check-in phải bằng hoặc lớn hơn ngày hiện tại
+            if (checkinDate != null && checkinDate.before(today)) {
+                JOptionPane.showMessageDialog(this, "Ngày check-in phải bằng hoặc lớn hơn ngày hiện tại", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 

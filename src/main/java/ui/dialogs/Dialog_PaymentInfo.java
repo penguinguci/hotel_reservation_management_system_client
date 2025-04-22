@@ -11,7 +11,6 @@ import entities.*;
 import interfaces.OrderDAO;
 import interfaces.ReservationDAO;
 import interfaces.StaffDAO;
-import lombok.SneakyThrows;
 import ultilities.GenerateString;
 import utils.CurrentAccount;
 import utils.MoneyUtil;
@@ -20,6 +19,7 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -29,7 +29,7 @@ import java.util.Set;
  *
  * @author TRAN LONG VU
  */
-public class Dialog_PaymentInfo extends JPanel {
+public class Dialog_PaymentInfo extends javax.swing.JPanel {
     private List<Reservation> reservations;
     private double totalPrice;       // Tổng tiền ban đầu (phòng + dịch vụ)
     private double serviceTotal;     // Tổng tiền dịch vụ
@@ -46,8 +46,7 @@ public class Dialog_PaymentInfo extends JPanel {
     private StaffDAO staffDAO;
     private boolean isUpdating = false;
 
-    @SneakyThrows
-    public Dialog_PaymentInfo(List<Reservation> reservations) {
+    public Dialog_PaymentInfo(List<Reservation> reservations) throws RemoteException {
         this.reservations = reservations;
         this.reservationDAO = new ReservationDAOImpl();
         this.orderDAO = new OrderDAOImpl();
@@ -187,7 +186,7 @@ public class Dialog_PaymentInfo extends JPanel {
 
             // Cập nhật trạng thái đặt phòng
             reservation.setRemainingAmount(0);
-            reservation.setReservationStatus(1); // Đã thanh toán
+            reservation.setStatus(true); // Đã thanh toán
             reservationDAO.update(reservation);
 
             paymentSuccessful = true;
@@ -313,31 +312,31 @@ public class Dialog_PaymentInfo extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new JPanel();
-        jLabel1 = new JLabel();
-        jPanel2 = new JPanel();
-        jPanel3 = new JPanel();
-        jPanel5 = new JPanel();
-        jLabel2 = new JLabel();
-        lbl_TotalPrice_Value = new JLabel();
-        jLabel3 = new JLabel();
-        lbl_overstayFee_Value = new JLabel();
-        jLabel4 = new JLabel();
-        lbl_TaxPrice_Value = new JLabel();
-        jLabel6 = new JLabel();
-        lbl_FeeService_Value = new JLabel();
-        jLabel8 = new JLabel();
-        lbl_FinalPrice_Value = new JLabel();
-        jLabel10 = new JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_TotalPrice_Value = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lbl_overstayFee_Value = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lbl_TaxPrice_Value = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lbl_FeeService_Value = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        lbl_FinalPrice_Value = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         cbx_PaymentMethod = new ui.components.combobox.StyledComboBox();
-        jPanel4 = new JPanel();
-        jPanel6 = new JPanel();
-        jLabel11 = new JLabel();
-        lbl_NeedToPay_Value = new JLabel();
-        jLabel13 = new JLabel();
-        lbl_RemainingMoney_Value = new JLabel();
-        jPanel7 = new JPanel();
-        jPanel9 = new JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        lbl_NeedToPay_Value = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lbl_RemainingMoney_Value = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         btn_1k = new ui.components.button.ButtonCustom();
         btn_2k = new ui.components.button.ButtonCustom();
         btn_5k = new ui.components.button.ButtonCustom();
@@ -347,138 +346,138 @@ public class Dialog_PaymentInfo extends JPanel {
         btn_100k = new ui.components.button.ButtonCustom();
         btn_200k = new ui.components.button.ButtonCustom();
         btn_500k = new ui.components.button.ButtonCustom();
-        jPanel10 = new JPanel();
+        jPanel10 = new javax.swing.JPanel();
         btn_Sufficient = new ui.components.button.ButtonCustom();
         btn_Back = new ui.components.button.ButtonCancelCustom();
         btn_Complete = new ui.components.button.ButtonCompleteCustom();
-        jPanel8 = new JPanel();
-        txt_CustomerPayment = new JTextField();
+        jPanel8 = new javax.swing.JPanel();
+        txt_CustomerPayment = new javax.swing.JTextField();
         btn_Delete = new ui.components.button.ButtonCustom();
-        jLabel15 = new JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
-        setBackground(new Color(255, 255, 255));
-        setPreferredSize(new Dimension(600, 520));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(600, 520));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new Color(102, 102, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 255));
         jLabel1.setText("Thông tin thanh toán");
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(411, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(411, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(29, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addContainerGap())
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 60));
 
-        jPanel2.setBackground(new Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel3.setBackground(new Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel5.setBackground(new Color(255, 255, 255));
-        jPanel5.setLayout(new GridLayout(12, 1));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new java.awt.GridLayout(12, 1));
 
-        jLabel2.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Tổng tiền:");
         jPanel5.add(jLabel2);
 
-        lbl_TotalPrice_Value.setFont(new Font("Segoe UI", 0, 15)); // NOI18N
-        lbl_TotalPrice_Value.setForeground(new Color(153, 153, 255));
+        lbl_TotalPrice_Value.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lbl_TotalPrice_Value.setForeground(new java.awt.Color(153, 153, 255));
         jPanel5.add(lbl_TotalPrice_Value);
 
-        jLabel3.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Phí phụ trội:");
         jPanel5.add(jLabel3);
 
-        lbl_overstayFee_Value.setFont(new Font("Segoe UI", 0, 15)); // NOI18N
-        lbl_overstayFee_Value.setForeground(new Color(153, 153, 255));
+        lbl_overstayFee_Value.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lbl_overstayFee_Value.setForeground(new java.awt.Color(153, 153, 255));
         jPanel5.add(lbl_overstayFee_Value);
 
-        jLabel4.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Thuế (10%):");
         jPanel5.add(jLabel4);
 
-        lbl_TaxPrice_Value.setFont(new Font("Segoe UI", 0, 15)); // NOI18N
-        lbl_TaxPrice_Value.setForeground(new Color(153, 153, 255));
+        lbl_TaxPrice_Value.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lbl_TaxPrice_Value.setForeground(new java.awt.Color(153, 153, 255));
         jPanel5.add(lbl_TaxPrice_Value);
 
-        jLabel6.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Phí dich vụ (5%):");
         jPanel5.add(jLabel6);
 
-        lbl_FeeService_Value.setFont(new Font("Segoe UI", 0, 15)); // NOI18N
-        lbl_FeeService_Value.setForeground(new Color(153, 153, 255));
+        lbl_FeeService_Value.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lbl_FeeService_Value.setForeground(new java.awt.Color(153, 153, 255));
         jPanel5.add(lbl_FeeService_Value);
 
-        jLabel8.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Tổng cộng:");
         jPanel5.add(jLabel8);
 
-        lbl_FinalPrice_Value.setFont(new Font("Segoe UI", 0, 15)); // NOI18N
-        lbl_FinalPrice_Value.setForeground(new Color(153, 153, 255));
+        lbl_FinalPrice_Value.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lbl_FinalPrice_Value.setForeground(new java.awt.Color(153, 153, 255));
         jPanel5.add(lbl_FinalPrice_Value);
 
-        jLabel10.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Phương thức thanh toán:");
         jPanel5.add(jLabel10);
         jPanel5.add(cbx_PaymentMethod);
 
-        GroupLayout jPanel3Layout = new GroupLayout(jPanel3);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jPanel5, GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                .addContainerGap())
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jPanel5, GroupLayout.PREFERRED_SIZE, 337, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(80, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel6.setBackground(new Color(255, 255, 255));
-        jPanel6.setLayout(new GridLayout(4, 0));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new java.awt.GridLayout(4, 0));
 
-        jLabel11.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Cần thanh toán:");
         jPanel6.add(jLabel11);
 
-        lbl_NeedToPay_Value.setFont(new Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_NeedToPay_Value.setForeground(new Color(255, 0, 51));
+        lbl_NeedToPay_Value.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_NeedToPay_Value.setForeground(new java.awt.Color(255, 0, 51));
         jPanel6.add(lbl_NeedToPay_Value);
 
-        jLabel13.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Trả lại khách:");
         jPanel6.add(jLabel13);
 
-        lbl_RemainingMoney_Value.setFont(new Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_RemainingMoney_Value.setForeground(new Color(255, 0, 51));
+        lbl_RemainingMoney_Value.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_RemainingMoney_Value.setForeground(new java.awt.Color(255, 0, 51));
         jPanel6.add(lbl_RemainingMoney_Value);
 
-        jPanel7.setBackground(new Color(255, 255, 255));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel9.setBackground(new Color(255, 255, 255));
-        jPanel9.setLayout(new GridLayout(3, 3, 10, 10));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new java.awt.GridLayout(3, 3, 10, 10));
 
         btn_1k.setText("1,000");
         btn_1k.addActionListener(new java.awt.event.ActionListener() {
@@ -512,8 +511,8 @@ public class Dialog_PaymentInfo extends JPanel {
         btn_500k.setText("500,000");
         jPanel9.add(btn_500k);
 
-        jPanel10.setBackground(new Color(255, 255, 255));
-        jPanel10.setLayout(new GridLayout(1, 0, 10, 0));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
         btn_Sufficient.setText("Vừa đủ");
         jPanel10.add(btn_Sufficient);
@@ -524,32 +523,32 @@ public class Dialog_PaymentInfo extends JPanel {
         btn_Complete.setText("Hoàn tất");
         jPanel10.add(btn_Complete);
 
-        GroupLayout jPanel7Layout = new GroupLayout(jPanel7);
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel9, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jPanel10, GroupLayout.PREFERRED_SIZE, 379, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel9, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jPanel10, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
 
-        jPanel8.setBackground(new Color(255, 255, 255));
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
-        txt_CustomerPayment.setFont(new Font("Segoe UI", 0, 15)); // NOI18N
-        txt_CustomerPayment.setBorder(BorderFactory.createLineBorder(new Color(204, 204, 204)));
+        txt_CustomerPayment.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txt_CustomerPayment.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         txt_CustomerPayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_CustomerPaymentActionPerformed(evt);
@@ -558,75 +557,75 @@ public class Dialog_PaymentInfo extends JPanel {
 
         btn_Delete.setText("Xóa");
 
-        GroupLayout jPanel8Layout = new GroupLayout(jPanel8);
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(txt_CustomerPayment)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_Delete, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(txt_CustomerPayment)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_CustomerPayment)
-                    .addComponent(btn_Delete, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-                .addContainerGap())
+                jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_CustomerPayment)
+                                        .addComponent(btn_Delete, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                                .addContainerGap())
         );
 
-        jLabel15.setFont(new Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel15.setText("Tiền khách đưa:");
 
-        GroupLayout jPanel4Layout = new GroupLayout(jPanel4);
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel15, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel6, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addGap(4, 4, 4)
-                .addComponent(jPanel8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel15)
+                                .addGap(4, 4, 4)
+                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
 
-        GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 640, 460));
@@ -656,33 +655,33 @@ public class Dialog_PaymentInfo extends JPanel {
     private ui.components.button.ButtonCustom btn_Delete;
     private ui.components.button.ButtonCustom btn_Sufficient;
     private ui.components.combobox.StyledComboBox cbx_PaymentMethod;
-    private JLabel jLabel1;
-    private JLabel jLabel10;
-    private JLabel jLabel11;
-    private JLabel jLabel13;
-    private JLabel jLabel15;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JLabel jLabel4;
-    private JLabel jLabel6;
-    private JLabel jLabel8;
-    private JPanel jPanel1;
-    private JPanel jPanel10;
-    private JPanel jPanel2;
-    private JPanel jPanel3;
-    private JPanel jPanel4;
-    private JPanel jPanel5;
-    private JPanel jPanel6;
-    private JPanel jPanel7;
-    private JPanel jPanel8;
-    private JPanel jPanel9;
-    private JLabel lbl_FeeService_Value;
-    private JLabel lbl_FinalPrice_Value;
-    private JLabel lbl_NeedToPay_Value;
-    private JLabel lbl_RemainingMoney_Value;
-    private JLabel lbl_TaxPrice_Value;
-    private JLabel lbl_TotalPrice_Value;
-    private JLabel lbl_overstayFee_Value;
-    private JTextField txt_CustomerPayment;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lbl_FeeService_Value;
+    private javax.swing.JLabel lbl_FinalPrice_Value;
+    private javax.swing.JLabel lbl_NeedToPay_Value;
+    private javax.swing.JLabel lbl_RemainingMoney_Value;
+    private javax.swing.JLabel lbl_TaxPrice_Value;
+    private javax.swing.JLabel lbl_TotalPrice_Value;
+    private javax.swing.JLabel lbl_overstayFee_Value;
+    private javax.swing.JTextField txt_CustomerPayment;
     // End of variables declaration//GEN-END:variables
 }
