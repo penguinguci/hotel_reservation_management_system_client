@@ -30,7 +30,7 @@ public class GUI_Login extends JFrame {
         setUndecorated(true); // Ẩn các nút điều khiển
         setShape(new RoundRectangle2D.Double(0, 0, 800, 500, 30, 30));
         UpdatePasswords hashPass = new UpdatePasswords();
-        hashPass.HashedPassword();
+        hashPass.hashedPassword();
         initComponents();
         setLocationRelativeTo(null);
 
@@ -396,22 +396,67 @@ public class GUI_Login extends JFrame {
                 "Xác nhận mật khẩu mới:", confirmPasswordField
         };
         int option = JOptionPane.showConfirmDialog(this, message, "Xác thực và đặt lại mật khẩu", JOptionPane.OK_CANCEL_OPTION);
+        // Đoạn mã xử lý khi người dùng nhấn OK trong dialog
         if (option == JOptionPane.OK_OPTION) {
-            String enteredCode = codeField.getText().trim();
-            String newPassword = new String(newPasswordField.getPassword());
-            String confirmPassword = new String(confirmPasswordField.getPassword());
+            boolean isCodeValid = false;
 
-            if (!newPassword.equals(confirmPassword)) {
-                JOptionPane.showMessageDialog(this, "Mật khẩu xác nhận không khớp.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+            // Vòng lặp để hiện dialog nhập mã xác thực cho đến khi mã hợp lệ hoặc người dùng hủy
+            while (!isCodeValid) {
+                String enteredCode = codeField.getText().trim();
+                String newPassword = new String(newPasswordField.getPassword());
+                String confirmPassword = new String(confirmPasswordField.getPassword());
 
-            if (enteredCode.equals(verificationCode)) {
-                AccountDAO accountDAO = new AccountDAOImpl();
-                String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
-                account.setPassword(hashedPassword);
-                accountDAO.updateAccount(account);
-                JOptionPane.showMessageDialog(this, "Đặt lại mật khẩu thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                // Kiểm tra mật khẩu xác nhận
+                if (!newPassword.equals(confirmPassword)) {
+                    JOptionPane.showMessageDialog(this, "Mật khẩu xác nhận không khớp.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    return; // Thoát nếu mật khẩu không khớp
+                }
+
+                // Kiểm tra mã xác thực
+                if (enteredCode.equals(verificationCode)) {
+                    AccountDAO accountDAO = new AccountDAOImpl();
+                    String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+                    account.setPassword(hashedPassword);
+                    accountDAO.updateAccount(account);
+                    JOptionPane.showMessageDialog(this, "Đặt lại mật khẩu thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    isCodeValid = true; // Mã hợp lệ, thoát vòng lặp
+                } else {
+                    // Hiển thị thông báo mã không hợp lệ
+                    JOptionPane.showMessageDialog(this, "Mã xác thực không hợp lệ", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Tạo lại dialog để nhập mã xác thực
+                    JTextField newCodeField = new JTextField(10);
+                    JPasswordField newPasswordFieldAgain = new JPasswordField(10);
+                    JPasswordField confirmPasswordFieldAgain = new JPasswordField(10);
+
+                    JPanel panel = new JPanel(new GridLayout(3, 2));
+                    panel.add(new JLabel("Nhập mã xác thực:"));
+                    panel.add(newCodeField);
+                    panel.add(new JLabel("Mật khẩu mới:"));
+                    panel.add(newPasswordFieldAgain);
+                    panel.add(new JLabel("Xác nhận mật khẩu:"));
+                    panel.add(confirmPasswordFieldAgain);
+
+                    // Hiện lại dialog nhập mã
+                    int newOption = JOptionPane.showConfirmDialog(
+                            this,
+
+                            panel,
+                            "Nhập mã xác thực",
+                            JOptionPane.OK_CANCEL_OPTION,
+                            JOptionPane.PLAIN_MESSAGE
+                    );
+
+                    // Nếu người dùng nhấn Cancel hoặc đóng dialog, thoát vòng lặp
+                    if (newOption != JOptionPane.OK_OPTION) {
+                        return; // Thoát nếu người dùng hủy
+                    }
+
+                    // Cập nhật các giá trị từ dialog mới
+                    codeField = newCodeField;
+                    newPasswordField = newPasswordFieldAgain;
+                    confirmPasswordField = confirmPasswordFieldAgain;
+                }
             }
         }
     }
