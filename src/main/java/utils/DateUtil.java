@@ -78,6 +78,16 @@ public class DateUtil {
         return cal.getTime();
     }
 
+    public static Date combineDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
+
     public static Date parseDateTime(String dateTimeStr) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         return format.parse(dateTimeStr);

@@ -4,6 +4,8 @@
  */
 package ui.forms;
 
+import lombok.SneakyThrows;
+
 /**
  *
  * @author TRAN LONG VU
@@ -40,6 +42,7 @@ public class Form_Booking extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    @SneakyThrows
     private void initTabs(){
         customTab = new ui.components.tab.CustomTab();
 
