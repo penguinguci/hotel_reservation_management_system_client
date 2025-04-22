@@ -596,7 +596,7 @@ public class Form_RoomManagement extends JPanel {
         room.setHourlyBaseRate(hourlyPriceText.isEmpty() ? 0.0 : Double.parseDouble(hourlyPriceText));
 
         // Mặc định minHours và maxHours
-        room.setMinHours(1);
+        room.setMinHours(2);
         room.setMaxHours(12);
 
         // Xử lý capacity
