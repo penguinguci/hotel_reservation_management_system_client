@@ -11,4 +11,5 @@ public interface StaffDAO extends GenericDAO<Staff, String>, Remote {
     boolean isEmailExists(String email)throws RemoteException;
     boolean isPhoneExists(String phone)throws RemoteException;
     List<Staff> searchStaffAdvanced(String id, String name, String phone, Boolean gender)throws RemoteException;
+    public void updateStatus(String staffId, boolean status) throws RemoteException;
 }
