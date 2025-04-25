@@ -602,7 +602,7 @@ public class Form_StaffManagement extends JPanel implements ListSelectionListene
             JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên để cập nhật trạng thái");
             return;
         }
-        String role = table.getTable().getValueAt(select, 8).toString();
+        String role = table.getTable().getValueAt(select, 7).toString();
 
         // Kiểm tra nếu role là "Quản lý"
         if (role.equals("Nhân viên quản lý")) {

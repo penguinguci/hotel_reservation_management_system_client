@@ -6,13 +6,15 @@ import ui.gui.GUI_Login;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.swing.*;
 import java.awt.*;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import javax.swing.*;
+import java.rmi.server.UnicastRemoteObject;
 
-public class Client {
-    private static final String HOST = "localhost";
+public class Client extends UnicastRemoteObject implements ClientCallback {
+    private static final String HOST = "localhost"; // Thay bằng IP của máy server
     private static final int PORT = 2004;
     private static final int STEP_DELAY = 800;
 
@@ -29,6 +31,20 @@ public class Client {
     public static StaffDAO staffDAO;
     public static GenericDAO genericDAO;
 
+    public Client() throws RemoteException {
+        super();
+    }
+
+    @Override
+    public void onDataChange(String message) throws RemoteException {
+        // Hiển thị thông báo hoặc cập nhật giao diện
+        SwingUtilities.invokeLater(() -> {
+            JOptionPane.showMessageDialog(null, "Dữ liệu đã thay đổi: " + message,
+                    "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            // TODO: Cập nhật giao diện (ví dụ: làm mới bảng dữ liệu)
+        });
+    }
+
     public static void main(String[] args) {
         // Show splash screen while initializing connection
         SplashLoading splash = new SplashLoading();
@@ -37,7 +53,8 @@ public class Client {
         // Initialize connection in background thread
         new Thread(() -> {
             try {
-                initializeConnection(splash);
+                Client client = new Client();
+                initializeConnection(splash, client);
                 Thread.sleep(1000);
                 splash.dispose();
 
@@ -49,7 +66,7 @@ public class Client {
                             break;
                         }
                     }
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                } catch (Exception ex) {
                     java.util.logging.Logger.getLogger(GUI_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
                 }
 
@@ -65,7 +82,7 @@ public class Client {
         }).start();
     }
 
-    private static void initializeConnection(SplashLoading splash) throws Exception {
+    private static void initializeConnection(SplashLoading splash, Client client) throws Exception {
         splash.processBarUpdate(5, "Đang khởi tạo ứng dụng...");
         Thread.sleep(STEP_DELAY);
 
@@ -108,11 +125,13 @@ public class Client {
             genericDAO = (GenericDAO) context.lookup("rmi://" + HOST + ":" + PORT + "/GenericDAO");
             Thread.sleep(STEP_DELAY);
 
-            splash.processBarUpdate(95, "Đang kiểm tra kết nối...");
-            Thread.sleep(STEP_DELAY * 2); // Nghỉ lâu hơn cho bước cuối
+            // Đăng ký client để nhận thông báo
+            splash.processBarUpdate(95, "Đang đăng ký nhận thông báo...");
+            genericDAO.registerClient(client);
+            Thread.sleep(STEP_DELAY * 2);
 
             splash.processBarUpdate(100, "Kết nối thành công!");
-            Thread.sleep(1000); // Hiển thị thông báo thành công trong 1s
+            Thread.sleep(1000);
 
         } catch (Exception e) {
             splash.processBarUpdate(0, "Lỗi kết nối: " + e.getMessage());

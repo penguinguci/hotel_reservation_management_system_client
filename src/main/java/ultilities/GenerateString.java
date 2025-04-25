@@ -15,13 +15,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class GenerateString {
     @SneakyThrows
     public static String generateStaffId() {
-        String prefix = "NV" + LocalDate.now().getYear() +
-                String.format("%02d", LocalDate.now().getMonthValue());
-
-        StaffDAO staffDao = new StaffDAOImpl();
-        long count = staffDao.countByPrefix(prefix);
-
-        return prefix + String.format("%03d", count + 1);
+        String timestamp = dateFormat.format(new Date());
+        int seq = sequence.incrementAndGet() % 1000;
+        return String.format("ST%s%03d", timestamp, seq);
     }
 
 
